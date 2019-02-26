@@ -15,12 +15,12 @@ class StatContainerComponent extends Component{
             <div className="container">
             <div className="section">
             <Tabs className='tab-demo z-depth-1' >
-                <Tab title="NBA Today" active>
+                <Tab title="Season" active>
                 {this.props.StatsSeason.map((stat,i)=> <StatComponent key={i} {...stat}/>)}
                 </Tab>
-                <Tab title="Season">Season</Tab>
-                <Tab title="Historical">Historical</Tab>
-                <Tab title="Highs">Highs</Tab>
+                <Tab title="NBA Today"></Tab>
+                <Tab title="Historical"></Tab>
+                <Tab title="Highs"></Tab>
             </Tabs>
             </div>
             <br/>
