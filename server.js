@@ -8,15 +8,31 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.get('/api/hello', (req, res) => {
+app.get('/api/seasonLeaderStats', (req, res) => {
     // fetch("https://stats.nba.com/stats/homepagev2/?GameScope=Season&PlayerOrTeam=Player&StatType=Traditional&Season=2018-19&SeasonType=Regular%20Season&PlayerScope=All%20Players&LeagueID=00&DayOffset=0")
     // .then(res => res.text())
     //   .then(body => console.log(body));
-    console.log("Llamo a axios");
+    console.log("Get Season Leader's stats");
     axios.get("https://stats.nba.com/stats/homepagev2/?GameScope=Season&PlayerOrTeam=Player&StatType=Traditional&Season=2018-19&SeasonType=Regular%20Season&PlayerScope=All%20Players&LeagueID=00&DayOffset=0")
-    .then(response => res.send(response.data));
+    .then(response => res.send(response.data))
+    .catch(function (error) {
+        console.log(error);
+      });
 
 });
+
+app.get('/api/playerInfo/:playerId', (req, res) => {
+    // fetch("https://stats.nba.com/stats/homepagev2/?GameScope=Season&PlayerOrTeam=Player&StatType=Traditional&Season=2018-19&SeasonType=Regular%20Season&PlayerScope=All%20Players&LeagueID=00&DayOffset=0")
+    // .then(res => res.text())
+    //   .then(body => console.log(body));
+    axios.get("https://stats.nba.com/stats/commonplayerinfo?PlayerID=" + req.params.playerId)
+    .then(response => res.send(response.data))
+    .catch(function (error) {
+        console.log(error);
+      });
+
+});
+
 app.post('/api/world', (req, res) => {
     console.log(req.body);
     res.send(

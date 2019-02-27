@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Card, Col,Table} from 'react-materialize'
+import {Card, Col,Table, Modal, Button} from 'react-materialize'
+import PlayerComponent from './players/PlayerComponent';
 
 class StatComponent extends Component{
     constructor(props){
@@ -33,9 +34,9 @@ class StatComponent extends Component{
 
         for (let i = 0; i < this.props.rowSet.length; i++) {
           let children = []     
-              console.log(this.props.rowSet[i][0]);
             children.push(<td>{this.props.rowSet[i][0]}</td>);
-            children.push(<td>{this.props.rowSet[i][2]}</td>);
+            children.push(<td><PlayerComponent header={this.props.rowSet[i][2]}
+                trigger={<a>{this.props.rowSet[i][2]}</a>} playerId={this.props.rowSet[i][1]}></PlayerComponent></td>);
             children.push(<td>{this.props.rowSet[i][4]}</td>);
             children.push(<td>{this.props.rowSet[i][8]}</td>);
           table.push(<tr>{children}</tr>)
