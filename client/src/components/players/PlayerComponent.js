@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import {Modal, Row, Col} from 'react-materialize';
+import '../../css/PlayerComponentCSS.css';
 
 class PlayerComponent extends Component{
-    constructor(props){
-        super(props);
-    }
-
     state={
         playerCommonInfo: [],
-        playerHeadlineStats: []
+        playerHeadlineStats: [],
+        prueba: ""
     }
     componentDidMount() {
         this.getPlayerInfo()
@@ -16,9 +14,14 @@ class PlayerComponent extends Component{
             console.log(res.resultSets);
             this.setState({ 
                 playerCommonInfo: res.resultSets[0], 
-                playerHeadlineStats: res.resultSets[1]
+                playerHeadlineStats: res.resultSets[1],
+                playerNumber: res.resultSets[0].rowSet[0][13],
+                playerPosition: res.resultSets[0].rowSet[0][14],
+                playerTeam: res.resultSets[0].rowSet[0][20] + res.resultSets[0].rowSet[0][17],
+                backgroundImage: `url('../../css/img/${res.resultSets[0].rowSet[0][18]}.png')`
             });
-            console.log(this.state.playerCommonInfo,this.state.playerHeadlineStats);})
+            console.log(this.state.playerCommonInfo.rowSet[0][13],this.state.playerHeadlineStats.rowSet[0]);
+        })
           .catch(err => console.log(err));
       }
 
@@ -33,13 +36,12 @@ class PlayerComponent extends Component{
         return(
             <Modal header={this.props.header}
                 trigger={this.props.trigger}>  
-                <Row>
-                    <Col s={6} className='grid-example'><img src={`https://nba-players.herokuapp.com/players/${this.props.header.split(" ")[1]}/${this.props.header.split(" ")[0]}`}></img></Col>
-                    <Col s={2} className='grid-example'><h2>#{this.state.playerCommonInfo[13]}|{this.state.playerCommonInfo[14]}|{this.state.playerCommonInfo[17]}</h2></Col>
-                    <Col s={1} className='grid-example'>3</Col>
-                    <Col s={1} className='grid-example'>4</Col>
+                <Row className="backTeamPlayerProfile" style={{backgroundImage: this.state.backgroundImage, backgroundRepeat: 'no-repeat', backgroundPosition: 'right', backgroundColor:'rgba(0, 0, 0, 0.1)'}}>
+                    <Col s={4} className='grid'><img src={`https://nba-players.herokuapp.com/players/${this.props.header.split(" ")[1]}/${this.props.header.split(" ")[0]}`} style={{marginBottom: '-5px'}}></img></Col>
+                    <Col s={2} className='grid'><h2>#{this.state.playerNumber}|{this.state.playerPosition}</h2></Col>
+                    <Col s={2} className='grid'><h4>{this.state.playerTeam}</h4></Col>
                 </Row>
-
+                
 
 
                            

@@ -4,11 +4,6 @@ import {Tabs, Tab} from 'react-materialize';
 
 class StatContainerComponent extends Component{
 
-    constructor(props){
-        super(props);
-        console.log(props.StatsSeason)
-    }   
-
     render() {
 
         return(
