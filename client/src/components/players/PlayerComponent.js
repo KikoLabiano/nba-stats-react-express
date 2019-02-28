@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Modal, Row, Col} from 'react-materialize';
-import '../../css/PlayerComponentCSS.css';
+import PlayerStatChartsContainerComponent from './PlayerStatChartsContainerComponent';
+import '../../css/players/PlayerComponentCSS.css';
 
 class PlayerComponent extends Component{
     state={
@@ -79,22 +80,22 @@ class PlayerComponent extends Component{
                         <br/>
                         <h5>{this.state.playerCountryCollege}</h5>
                     </Col>
-                    <Col s={1} className='playerComponentGrid' rowspan="2">
+                    <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>Pts</p></div>    
                         <br/>
                         <h5>{this.state.playerPoints}</h5>
                     </Col>
-                    <Col s={1} className='playerComponentGrid' rowspan="2">
+                    <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>Rbs</p></div>    
                         <br/>
                         <h5>{this.state.playerRebounds}</h5>
                     </Col>
-                    <Col s={1} className='playerComponentGrid' rowspan="2">
+                    <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>Ast</p></div>    
                         <br/>
                         <h5>{this.state.playerAssists}</h5>
                     </Col>
-                    <Col s={1} className='playerComponentGrid' rowspan="2">
+                    <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>PIE</p></div>    
                         <br/>
                         <h5>{this.state.playerPIE}</h5>
@@ -128,8 +129,11 @@ class PlayerComponent extends Component{
                     </Col>
                 </Row>
 
-
-                           
+                <Row>
+                    <Col s={12}>
+                        <PlayerStatChartsContainerComponent playerId={this.props.playerId}/>
+                    </Col>
+                </Row>                           
             </Modal>
         );
     }

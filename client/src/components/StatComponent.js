@@ -31,14 +31,20 @@ class StatComponent extends Component{
         //             children.push(<td>{row[i][8]}</td>);
         //         table.push(<tr>{children}</tr>)
         // });
-
+        let pct;
         for (let i = 0; i < this.props.rowSet.length; i++) {
           let children = []     
             children.push(<td>{this.props.rowSet[i][0]}</td>);
             children.push(<td><PlayerComponent playerName={this.props.rowSet[i][2]}
                 trigger={<a>{this.props.rowSet[i][2]}</a>} playerId={this.props.rowSet[i][1]}></PlayerComponent></td>);
             children.push(<td>{this.props.rowSet[i][4]}</td>);
-            children.push(<td>{this.props.rowSet[i][8]}</td>);
+            if(this.props.headers[this.props.headers.length-1].toString().toUpperCase().indexOf("PCT")>-1){
+                pct=(Number(this.props.rowSet[i][8]) * 100).toFixed(2).toString() + " %";
+            }
+            else{
+                pct = this.props.rowSet[i][8];
+            }
+            children.push(<td>{pct}</td>);
           table.push(<tr>{children}</tr>)
         }
        
