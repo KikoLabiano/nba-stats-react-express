@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import {Tabs, Col, Row, Button, Icon, Grid} from 'react-materialize'
 import StatContainerComponent from './components/StatContainerComponent'
 
