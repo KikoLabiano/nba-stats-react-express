@@ -14,7 +14,7 @@ app.get('/api/seasonLeaderStats', (req, res) => {
     //   .then(body => console.log(body));
     console.log("Get Season Leader's stats");
     //axios.get("https://stats.nba.com/stats/homepagev2/?GameScope=Season&PlayerOrTeam=Player&StatType=Traditional&Season=2018-19&SeasonType=Regular%20Season&PlayerScope=All%20Players&LeagueID=00&DayOffset=0")
-    axios.get('http://localhost:3000/jsons/seasonLeaders.json')
+    axios.get('http://127.0.0.1:3000/jsons/seasonLeaders.json')
     .then(response => res.send(response.data))
     .catch(function (error) {
         console.log(error);
@@ -27,7 +27,7 @@ app.get('/api/playerInfo/:playerId', (req, res) => {
     // .then(res => res.text())
     //   .then(body => console.log(body));
     //axios.get("https://stats.nba.com/stats/commonplayerinfo?PlayerID=" + req.params.playerId)
-    axios.get('http://localhost:3000/jsons/playerCommonInfo.json')
+    axios.get('http://127.0.0.1:3000/jsons/playerCommonInfo.json')
     .then(response => res.send(response.data))
     .catch(function (error) {
         console.log("Error buenooo: " + error);

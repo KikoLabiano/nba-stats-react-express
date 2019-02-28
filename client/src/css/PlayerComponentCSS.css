@@ -1,3 +1,34 @@
-.backTeamPlayerProfile{
-    
+.playerComponentBackground{
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color:rgba(0, 84, 164, 1);
+}
+
+.playerComponentTitleText{
+    /* text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; */
+    color: white;
+}
+
+.playerComponentModal{
+    width:90%;
+}
+
+.playerComponentPlayerPhoto{
+    margin-bottom: -5px;
+}
+
+.playerComponentTile{
+    float: left;
+}
+
+.playerComponentGrid{
+    border: 1px solid white;
+}
+
+.row{
+    margin-bottom: 0px;
+}
+
+a{
+    cursor: pointer;
 }

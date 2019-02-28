@@ -35,7 +35,7 @@ class StatComponent extends Component{
         for (let i = 0; i < this.props.rowSet.length; i++) {
           let children = []     
             children.push(<td>{this.props.rowSet[i][0]}</td>);
-            children.push(<td><PlayerComponent header={this.props.rowSet[i][2]}
+            children.push(<td><PlayerComponent playerName={this.props.rowSet[i][2]}
                 trigger={<a>{this.props.rowSet[i][2]}</a>} playerId={this.props.rowSet[i][1]}></PlayerComponent></td>);
             children.push(<td>{this.props.rowSet[i][4]}</td>);
             children.push(<td>{this.props.rowSet[i][8]}</td>);
