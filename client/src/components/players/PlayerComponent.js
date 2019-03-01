@@ -5,20 +5,7 @@ import '../../css/players/PlayerComponentCSS.css';
 
 class PlayerComponent extends Component{
     state={
-        playerNumber: "",
-        playerPosition: "",
-        playerTeam: "",
-        playerHeight: "",
-        playerWeight: "",
-        playerCountryCollege: "",
-        playerBirthday: "",
-        playerPoints: "",
-        playerRebounds: "",
-        playerAssists: "",
-        playerPIE: "",
-        playerAge: "",
-        playerDraft: "",
-        playerExperience: "",
+        playerInfo:{},
         backgroundImage: ""
 
     }
@@ -26,7 +13,8 @@ class PlayerComponent extends Component{
         this.getPlayerInfo()
           .then(res => {
             console.log(res.resultSets);
-            this.setState({         
+            this.setState(prevState=>({         
+                playerInfo: {...prevState.playerInfo, 
                 playerNumber: res.resultSets[0].rowSet[0][13],
                 playerPosition: res.resultSets[0].rowSet[0][14],
                 playerTeam: res.resultSets[0].rowSet[0][20] + res.resultSets[0].rowSet[0][17],
@@ -40,9 +28,10 @@ class PlayerComponent extends Component{
                 playerPIE: Number(res.resultSets[1].rowSet[0][6])*100,
                 playerAge: Number(new Date().getFullYear()) - Number(res.resultSets[0].rowSet[0][6].substring(0,4)),
                 playerDraft: res.resultSets[0].rowSet[0][22] + " Rnd " + res.resultSets[0].rowSet[0][28] + " Pick " + res.resultSets[0].rowSet[0][29],
-                playerExperience: Number(res.resultSets[0].rowSet[0][23]) - Number(res.resultSets[0].rowSet[0][22]),
+                playerExperience: Number(res.resultSets[0].rowSet[0][23]) - Number(res.resultSets[0].rowSet[0][22])                
+                },
                 backgroundImage: `url('../../css/img/${res.resultSets[0].rowSet[0][18]}.png')`
-            });
+            }));
             //console.log(this.state.playerCommonInfo.rowSet[0][13],this.state.playerHeadlineStats.rowSet[0]);
         })
           .catch(err => console.log(err));
@@ -61,66 +50,66 @@ class PlayerComponent extends Component{
                 trigger={this.props.trigger} className="playerComponentModal">  
                 <Row className="playerComponentBackground" style={{backgroundImage: this.state.backgroundImage}}>
                     <Col s={4} className='playerComponentPlayerPhoto'><img src={`https://nba-players.herokuapp.com/players/${this.props.playerName.split(" ")[1]}/${this.props.playerName.split(" ")[0]}`}></img></Col>
-                    <Col s={2} className='grid'><h2 className="playerComponentTitleText">#{this.state.playerNumber}|{this.state.playerPosition}</h2></Col>
-                    <Col s={2} className='grid'><h4 className="playerComponentTitleText">{this.state.playerTeam}</h4></Col>
+                    <Col s={2} className='grid'><h2 className="playerComponentTitleText">#{this.state.playerInfo.playerNumber}|{this.state.playerInfo.playerPosition}</h2></Col>
+                    <Col s={2} className='grid'><h4 className="playerComponentTitleText">{this.state.playerInfo.playerTeam}</h4></Col>
                 </Row>
                 <Row className="playerComponentBackground playerComponentTitleText">
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>HT</p></div>    
                         <br/>
-                        <h5>{this.state.playerHeight}</h5>
+                        <h5>{this.state.playerInfo.playerHeight}</h5>
                     </Col>
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>WT</p></div>  
                         <br/>  
-                        <h5>{this.state.playerWeight} lbs</h5>
+                        <h5>{this.state.playerInfo.playerWeight} lbs</h5>
                     </Col>
                     <Col s={4} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Prior</p></div>    
                         <br/>
-                        <h5>{this.state.playerCountryCollege}</h5>
+                        <h5>{this.state.playerInfo.playerCountryCollege}</h5>
                     </Col>
                     <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>Pts</p></div>    
                         <br/>
-                        <h5>{this.state.playerPoints}</h5>
+                        <h5>{this.state.playerInfo.playerPoints}</h5>
                     </Col>
                     <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>Rbs</p></div>    
                         <br/>
-                        <h5>{this.state.playerRebounds}</h5>
+                        <h5>{this.state.playerInfo.playerRebounds}</h5>
                     </Col>
                     <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>Ast</p></div>    
                         <br/>
-                        <h5>{this.state.playerAssists}</h5>
+                        <h5>{this.state.playerInfo.playerAssists}</h5>
                     </Col>
                     <Col s={1} className='playerComponentGrid' rowSpan="2">
                         <div className="playerComponentTile"><p>PIE</p></div>    
                         <br/>
-                        <h5>{this.state.playerPIE}</h5>
+                        <h5>{this.state.playerInfo.playerPIE}</h5>
                     </Col>
                 </Row>
                 <Row className="playerComponentBackground playerComponentTitleText">
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Age</p></div>    
                         <br/>
-                        <h5>{this.state.playerAge}</h5>
+                        <h5>{this.state.playerInfo.playerAge}</h5>
                     </Col>
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Born</p></div>  
                         <br/>  
-                        <h5>{this.state.playerBirthday}</h5>
+                        <h5>{this.state.playerInfo.playerBirthday}</h5>
                     </Col>
                     <Col s={3} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Draft</p></div>    
                         <br/>
-                        <h5>{this.state.playerDraft}</h5>
+                        <h5>{this.state.playerInfo.playerDraft}</h5>
                     </Col>
                     <Col s={1} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Exp</p></div>    
                         <br/>
-                        <h5>{this.state.playerExperience}</h5>
+                        <h5>{this.state.playerInfo.playerExperience}</h5>
                     </Col>
                     <Col s={4} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Name</p></div>    
