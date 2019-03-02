@@ -61,18 +61,13 @@ class PlayerChartComponent extends Component{
 
     
     componentDidMount(){
-        console.log("da");
-            this.getPlayerStats()
-          .then(res => {
-              this.filterData(res,this.props.statType);
-        })
-          .catch(err => console.log(err));
+        this.filterData(this.props.data,this.props.statType);
       }
 
-      filterData = async (res,statName)=>{
+      filterData = async (dat,statName)=>{
             //TODO check undefined??
-          if(typeof(res.resultSets)!=="undefined"){
-            let seasonTotalsRS = res.resultSets.filter( function (el) {
+          if(typeof(dat)!=="undefined"){
+            let seasonTotalsRS = dat.filter( function (el) {
                 return el.name === statName;
             });
             // console.log(seasonTotalsRS[0].rowSet[0]);
@@ -115,12 +110,7 @@ class PlayerChartComponent extends Component{
         }
       };
 
-    getPlayerStats = async () => {
-        const response = await fetch('/api/playerStats/' + this.props.playerId);
-        const body = await response.json();
-        if (response.status !== 200) throw Error(body.message);
-        return body;
-      };
+   
 
     render(){
         return(
