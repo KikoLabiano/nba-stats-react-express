@@ -61,16 +61,16 @@ class PlayerChartComponent extends Component{
 
     
     componentDidMount(){
+        // console.log("PlayerChartComponent loaded!");
         this.filterData(this.props.data,this.props.statType);
       }
 
       filterData = async (dat,statName)=>{
             //TODO check undefined??
-          if(typeof(dat)!=="undefined"){
-            let seasonTotalsRS = dat.filter( function (el) {
+          if(typeof(dat.resultSets)!=="undefined"){
+            let seasonTotalsRS = dat.resultSets.filter( function (el) {
                 return el.name === statName;
             });
-            // console.log(seasonTotalsRS[0].rowSet[0]);
 
             let seasons = [];
             let points = [];

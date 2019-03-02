@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-class PlayerColumnChartComponent extends Component{
+class PlayerPieChartComponent extends Component{
 
     state={
         options: {
@@ -59,14 +59,14 @@ class PlayerColumnChartComponent extends Component{
     }
 
     
-    // componentDidMount(){
-    //     console.log("da");
-    //         this.getPlayerStats()
-    //       .then(res => {
-    //           this.filterData(res,this.props.statType);
-    //     })
-    //       .catch(err => console.log(err));
-    //   }
+    componentDidMount(){
+        // console.log("PlayerPieChartComponent loaded!");
+        //     this.getPlayerStats()
+        //   .then(res => {
+        //       this.filterData(res,this.props.statType);
+        // })
+        //   .catch(err => console.log(err));
+      }
 
       filterData = async (res,statName)=>{
             //TODO check undefined??
@@ -133,4 +133,4 @@ class PlayerColumnChartComponent extends Component{
     }
 }
 
-export default PlayerColumnChartComponent;
+export default PlayerPieChartComponent;

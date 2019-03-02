@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-materialize';
 import PlayerChartComponent from './PlayerChartComponent';
-import PlayerColumnChartComponent from './PlayerColumnChartComponent';
+import PlayerPieChartComponent from './PlayerPieChartComponent';
 
 class PlayerStatChartsContainerComponent extends Component{
 
 state={
-    allData:[]
+    allData:{}
 }
 
     componentDidMount(){
-        console.log("da");
             this.getPlayerStats()
           .then(res => {
               this.setState({
-                allData: res.resultSets
+                allData: res
               });
         })
           .catch(err => console.log(err));
@@ -40,7 +39,7 @@ state={
                 </Tab>
                 <Tab title="Career totals"></Tab>
                 <Tab title="Career highs">
-                    <PlayerColumnChartComponent statType="CareerHighs" data={this.state.allData}/>
+                    <PlayerPieChartComponent statType="CareerHighs" data={this.state.allData}/>
                 </Tab>
                 <Tab title="Blocks"></Tab>
             </Tabs>
