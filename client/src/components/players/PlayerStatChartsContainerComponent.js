@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs, Tab} from 'react-materialize';
 import PlayerChartComponent from './PlayerChartComponent';
-
+import PlayerColumnChartComponent from './PlayerColumnChartComponent';
 
 class PlayerStatChartsContainerComponent extends Component{
 
@@ -19,7 +19,9 @@ class PlayerStatChartsContainerComponent extends Component{
                     <PlayerChartComponent statType="SeasonTotalsPostSeason" playerId={this.props.playerId}></PlayerChartComponent>
                 </Tab>
                 <Tab title="Career totals"></Tab>
-                <Tab title="Career highs"></Tab>
+                <Tab title="Career highs">
+                    <PlayerColumnChartComponent />
+                </Tab>
                 <Tab title="Blocks"></Tab>
             </Tabs>
             </div>

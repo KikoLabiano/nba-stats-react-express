@@ -2,72 +2,71 @@ import React,{Component} from 'react';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-class PlayerChartComponent extends Component{
+class PlayerColumnChartComponent extends Component{
 
     state={
         options: {
-          title: {
-            text: 'Stats'
-        },
-        subtitle: {
-          text: ''
-        },
-        yAxis: {
-          title: {
-              text: 'Values'
-          }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },    
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 2010
-            }
-        },
-    
-        series: [{
-            name: 'Points',
-            data: []
-        }, {
-            name: 'Rebounds',
-            data: []
-        }, {
-            name: 'Assists',
-            data: []
-        }],
-    
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+            title: {
+                text: 'Browser<br>shares<br>2017',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 40
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: 'bold',
+                            color: 'white'
+                        }
+                    },
+                    startAngle: -90,
+                    endAngle: 90,
+                    center: ['50%', '75%'],
+                    size: '110%'
                 }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                innerSize: '50%',
+                data: [
+                    ['Chrome', 58.9],
+                    ['Firefox', 13.29],
+                    ['Internet Explorer', 13],
+                    ['Edge', 3.78],
+                    ['Safari', 3.42],
+                    {
+                        name: 'Other',
+                        y: 7.61,
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }
+                ]
             }]
-        }
         }
     }
 
     
-    componentDidMount(){
-        console.log("da");
-            this.getPlayerStats()
-          .then(res => {
-              this.filterData(res,this.props.statType);
-        })
-          .catch(err => console.log(err));
-      }
+    // componentDidMount(){
+    //     console.log("da");
+    //         this.getPlayerStats()
+    //       .then(res => {
+    //           this.filterData(res,this.props.statType);
+    //     })
+    //       .catch(err => console.log(err));
+    //   }
 
       filterData = async (res,statName)=>{
             //TODO check undefined??
@@ -134,4 +133,4 @@ class PlayerChartComponent extends Component{
     }
 }
 
-export default PlayerChartComponent;
+export default PlayerColumnChartComponent;
