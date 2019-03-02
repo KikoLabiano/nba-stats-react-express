@@ -12,7 +12,6 @@ class PlayerComponent extends Component{
     componentDidMount() {
         this.getPlayerInfo()
           .then(res => {
-            console.log(res.resultSets);
             this.setState(prevState=>({         
                 playerInfo: {...prevState.playerInfo, 
                 playerNumber: res.resultSets[0].rowSet[0][13],

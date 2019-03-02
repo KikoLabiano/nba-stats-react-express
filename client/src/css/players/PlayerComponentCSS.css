@@ -11,6 +11,8 @@
 
 .playerComponentModal{
     width:90%;
+    max-height:100%;
+    top:1%;
 }
 
 .playerComponentPlayerPhoto{
