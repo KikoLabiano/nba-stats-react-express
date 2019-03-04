@@ -48,39 +48,59 @@ class PlayerBarChartComponent extends Component{
                 return el.name === statName;
             });
 
-            let highs = [];
             let texts = [];
-            texts.push(`Points<br/>(${seasonHighs[0].rowSet[0][2]}<br/> vs. ${seasonHighs[0].rowSet[0][4]}${seasonHighs[0].rowSet[0][5]})`)
-            highs.push(seasonHighs[0].rowSet[0][8]);
+            let points = "";
+            let assists = "";
+            let rebounds = "";
+            let steals = "";
+            let blocks = "";
 
-            seasonHighs[0].rowSet.forEach((season,i)=>{
-                if(season[])
-            seasons.push(season[1]);
-            points.push(Number((Number(season[26])/Number(season[6])).toFixed(2)));
-            rebounds.push(Number((Number(season[26])/Number(season[20])).toFixed(2)));
-            assists.push(Number((Number(season[26])/Number(season[21])).toFixed(2)));
+            seasonHighs[0].rowSet.forEach((season,i)=>{ 
+            switch(season[7]){
+                case "PTS":
+                    if(points===""){
+                        texts.push(`Points<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
+                        points = season[8];
+                    }
+                    break;
+                case "AST":
+                    if(assists===""){
+                        texts.push(`Assists<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
+                        assists = season[8];
+                    }
+                    break;
+                case "RBD":
+                    if(rebounds===""){
+                        texts.push(`Rebounds<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
+                        rebounds = season[8];
+                    }
+                    break;
+                case "STL":
+                    if(steals===""){
+                        texts.push(`Steals<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
+                        steals = season[8];
+                    }
+                    break;
+                case "BLK":
+                    if(blocks===""){
+                        texts.push(`Blocks<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
+                        blocks = season[8];
+                    }
+                    break;
+                default:
+                    break;
+            }            
             
             });
 
             this.setState(prevState=>({  
-            options: {...prevState.options,
-            plotOptions: {
-                series: {
-                    label: {
-                        connectorAllowed: false
-                    },
-                    pointStart: initSeason
-                }
-            },
-            series: [{
-                    name: 'Points',
-                    data: points
-                }, {
-                    name: 'Rebounds',
-                    data: rebounds
-                }, {
-                    name: 'Assists',
-                    data: assists
+            options: {...prevState.options,   
+                xAxis: {
+                    categories: texts
+                },         
+                series: [{
+                    name: '',
+                    data: [points, rebounds, assists, steals, blocks]
                 }]
             }
             }));
