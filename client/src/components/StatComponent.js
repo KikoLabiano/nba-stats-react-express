@@ -9,7 +9,6 @@ class StatComponent extends Component{
 
     createTable = () => {
         let table = []
-
         // this.props.rowset.map((row, i) => {
         //     table.push(<tr>)
         //     row.map((r,j)=>({
