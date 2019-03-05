@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './css/App.css';
-import {Tabs, Col, Row, Button, Icon, Grid} from 'react-materialize'
-import StatContainerComponent from './components/StatContainerComponent'
+import {Tabs, Col, Row, Button, Icon, Grid} from 'react-materialize';
+import StatContainerComponent from './components/StatContainerComponent';
+import TitleFunctionComponent from './components/appComponents/TitleFunctionComponent';
 
 
 class App extends Component {
@@ -47,7 +48,7 @@ render() {
             <br/>
             <h1 className="header center blue-text">NBA Stats</h1>
             <div className="row center">
-              <h5 className="header col s12 light">Check every NBA stat you can imagine!</h5>
+              <TitleFunctionComponent />
             </div>      
             <br/><br/>
           </div>

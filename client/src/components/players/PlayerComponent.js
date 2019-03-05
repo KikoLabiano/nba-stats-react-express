@@ -54,7 +54,7 @@ class PlayerComponent extends Component{
                     <Col s={2} className='grid'><h2 className="playerComponentTitleText">#{this.state.playerInfo.playerNumber}|{this.state.playerInfo.playerPosition}</h2><br/><h4 className="playerComponentTitleText">{this.state.playerInfo.playerTeam}</h4></Col>
                     {/* <Col s={2} className='grid'></Col> */}
                 </Row>
-                <Row className={`playerComponentTitleText ${this.state.class}`}>
+                <Row className={`playerComponentTitleText playerComponentBackgroundNoImage ${this.state.class}`}>
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>HT</p></div>    
                         <br/>
@@ -91,7 +91,7 @@ class PlayerComponent extends Component{
                         <h5>{this.state.playerInfo.playerPIE}</h5>
                     </Col>
                 </Row>
-                <Row className={`playerComponentTitleText ${this.state.class}`}>
+                <Row className={`playerComponentTitleText playerComponentBackgroundNoImage ${this.state.class}`}>
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Age</p></div>    
                         <br/>

@@ -54,42 +54,43 @@ class PlayerBarChartComponent extends Component{
             let rebounds = "";
             let steals = "";
             let blocks = "";
-
+            let statText = "";
             seasonHighs[0].rowSet.forEach((season,i)=>{ 
-            switch(season[7]){
-                case "PTS":
-                    if(points===""){
-                        texts.push(`Points<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
-                        points = season[8];
-                    }
-                    break;
-                case "AST":
-                    if(assists===""){
-                        texts.push(`Assists<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
-                        assists = season[8];
-                    }
-                    break;
-                case "REB":
-                    if(rebounds===""){
-                        texts.push(`Rebounds<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
-                        rebounds = season[8];
-                    }
-                    break;
-                case "STL":
-                    if(steals===""){
-                        texts.push(`Steals<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
-                        steals = season[8];
-                    }
-                    break;
-                case "BLK":
-                    if(blocks===""){
-                        texts.push(`Blocks<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
-                        blocks = season[8];
-                    }
-                    break;
-                default:
-                    break;
-            }            
+                switch(season[7]){
+                    case "PTS":
+                        if(points===""){
+                            statText="Points";                        
+                            points = season[8];
+                        }
+                        break;
+                    case "AST":
+                        if(assists===""){
+                            statText="Assists";
+                            assists = season[8];
+                        }
+                        break;
+                    case "REB":
+                        if(rebounds===""){
+                            statText="Rebounds";
+                            rebounds = season[8];
+                        }
+                        break;
+                    case "STL":
+                        if(steals===""){
+                            statText="Steals";
+                            steals = season[8];
+                        }
+                        break;
+                    case "BLK":
+                        if(blocks===""){
+                            statText="Blocks";
+                            blocks = season[8];
+                        }
+                        break;
+                    default:
+                        break;
+                }            
+                texts.push(`${statText}<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
             
             });
 

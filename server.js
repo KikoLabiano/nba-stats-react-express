@@ -34,8 +34,8 @@ app.get('/api/playerInfo/:playerId', (req, res) => {
 
 app.get('/api/playerStats/:playerId', (req, res) => {    
   console.log("https://stats.nba.com/stats/playerprofilev2?PlayerID=" + req.params.playerId+ "&perMode=Totals");
-    axios.get("https://stats.nba.com/stats/playerprofilev2?PlayerID=" + req.params.playerId+ "&perMode=Totals")
-    //axios.get('http://127.0.0.1:3000/jsons/playerStats.json')
+    //axios.get("https://stats.nba.com/stats/playerprofilev2?PlayerID=" + req.params.playerId+ "&perMode=Totals")
+    axios.get('http://127.0.0.1:3000/jsons/playerStats.json')
     .then(response => res.send(response.data))
     .catch(function (error) {
         console.log("Error: " + error);
