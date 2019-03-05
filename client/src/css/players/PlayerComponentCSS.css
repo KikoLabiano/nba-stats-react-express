@@ -1,8 +1,131 @@
 .playerComponentBackground{
     background-repeat: no-repeat;
     background-position: right;
-    background-color:rgba(0, 84, 164, 1);
+    background-size: 500px 500px;
+    /* background-color:rgba(0, 84, 164, 1); */
 }
+
+.ATL{
+    background-color:#E03A3E;
+    background-image: url('../img/ATL.png');
+}
+.BKN{
+    background-color:#000000;
+    background-image: url('../img/BKN.png');
+}
+.BOS{
+    background-color:#007A33;
+    background-image: url('../img/BOS.png');
+}
+.CHA{
+    background-color:#1D1160;
+    background-image: url('../img/CHA.png');
+}
+.CHI{
+    background-color:#CE1141;
+    background-image: url('../img/CHI.png');
+}
+.CLE{
+    background-color:#6F263D;
+    background-image: url('../img/CLE.png');
+}
+.DAL{
+    background-color:#00538C;
+    background-image: url('../img/DAL.png');
+}
+.DEN{
+    background-color:#0E2240;
+    background-image: url('../img/DEN.png');
+}
+.DET{
+    background-color:#C8102E;
+    background-image: url('../img/DET.png');
+}
+.GSW{
+    background-color:#006BB6;
+    background-image: url('../img/GSW.png');
+}
+.HOU{
+    background-color:#CE1141;
+    background-image: url('../img/HOU.png');
+}
+.IND{
+    background-color:#002D62;
+    background-image: url('../img/IND.png');
+}
+.LAC{
+    background-color:#C8102E;
+    background-image: url('../img/LAC.png');
+}
+.LAL{
+    background-color:#552583;
+    background-image: url('../img/LAL.png');
+}
+.MEM{
+    background-color:#5D76A9;
+    background-image: url('../img/MEM.png');
+}
+.MIA{
+    background-color:#98002E;
+    background-image: url('../img/MIA.png');
+}
+.MIL{
+    background-color:#00471B;
+    background-image: url('../img/MIL.png');
+}
+.MIN{
+    background-color:#0C2340;
+    background-image: url('../img/MIN.png');
+}
+.NOP{
+    background-color:#0C2340;
+    background-image: url('../img/NOP.png');
+}
+.NYK{
+    background-color:#006BB6;
+    background-image: url('../img/NYK.png');
+}
+.OKC{
+    background-color:#007AC1;
+    background-image: url('../img/OKC.png');
+}
+.ORL{
+    background-color:#0077C0;
+    background-image: url('../img/ORL.png');
+}
+.PHI{
+    background-color:#006BB6;
+    background-image: url('../img/PHI.png');
+}
+.PHX{
+    background-color:#1D1160;
+    background-image: url('../img/PHX.png');
+}
+.POR{
+    background-color:#E03A3E;
+    background-image: url('../img/POR.png');
+}
+.SAC{
+    background-color:#5A2D81;
+    background-image: url('../img/SAC.png');
+}
+.SAS{
+    background-color:#C4CED4;
+    background-image: url('../img/SAS.png');
+}
+.TOR{
+    background-color:#CE1141;
+    background-image: url('../img/TOR.png');
+}
+.UTA{
+    background-color:#002B5C;
+    background-image: url('../img/UTA.png');
+}
+.WAS{
+    background-color:#002B5C;
+    background-image: url('../img/WAS.png');
+}
+
 
 .playerComponentTitleText{
     /* text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; */

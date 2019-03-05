@@ -6,7 +6,8 @@ import '../../css/players/PlayerComponentCSS.css';
 class PlayerComponent extends Component{
     state={
         playerInfo:{},
-        backgroundImage: ""
+        class: "playerComponentBackground"
+        //backgroundImage: ""
 
     }
     componentDidMount() {
@@ -16,7 +17,7 @@ class PlayerComponent extends Component{
                 playerInfo: {...prevState.playerInfo, 
                 playerNumber: res.resultSets[0].rowSet[0][13],
                 playerPosition: res.resultSets[0].rowSet[0][14],
-                playerTeam: res.resultSets[0].rowSet[0][20] + res.resultSets[0].rowSet[0][17],
+                playerTeam: res.resultSets[0].rowSet[0][20] + res.resultSets[0].rowSet[0][17],                
                 playerHeight: res.resultSets[0].rowSet[0][10],
                 playerWeight: res.resultSets[0].rowSet[0][11],
                 playerCountryCollege: res.resultSets[0].rowSet[0][9],
@@ -29,9 +30,9 @@ class PlayerComponent extends Component{
                 playerDraft: res.resultSets[0].rowSet[0][22] + " Rnd " + res.resultSets[0].rowSet[0][28] + " Pick " + res.resultSets[0].rowSet[0][29],
                 playerExperience: Number(res.resultSets[0].rowSet[0][23]) - Number(res.resultSets[0].rowSet[0][22])                
                 },
-                backgroundImage: `url('../../css/img/${res.resultSets[0].rowSet[0][18]}.png')`
+                class: prevState.class + " " + res.resultSets[0].rowSet[0][18]
+                //backgroundImage: `url('../../css/img/${res.resultSets[0].rowSet[0][18]}.png')`
             }));
-            //console.log(this.state.playerCommonInfo.rowSet[0][13],this.state.playerHeadlineStats.rowSet[0]);
         })
           .catch(err => console.log(err));
       }
@@ -40,6 +41,7 @@ class PlayerComponent extends Component{
         const response = await fetch('/api/playerInfo/' + this.props.playerId);
         const body = await response.json();
         if (response.status !== 200) throw Error(body.message);
+        console.log(this.props.playerId,this.props.playerName);
         return body;
       };
 
@@ -47,12 +49,12 @@ class PlayerComponent extends Component{
         return(
             <Modal header={this.props.playerName}
                 trigger={this.props.trigger} className="playerComponentModal">  
-                <Row className="playerComponentBackground" style={{backgroundImage: this.state.backgroundImage}}>
+                <Row className={this.state.class}>
                     <Col s={4} className='playerComponentPlayerPhoto'><img src={`https://nba-players.herokuapp.com/players/${this.props.playerName.split(" ")[1]}/${this.props.playerName.split(" ")[0]}`}></img></Col>
-                    <Col s={2} className='grid'><h2 className="playerComponentTitleText">#{this.state.playerInfo.playerNumber}|{this.state.playerInfo.playerPosition}</h2></Col>
-                    <Col s={2} className='grid'><h4 className="playerComponentTitleText">{this.state.playerInfo.playerTeam}</h4></Col>
+                    <Col s={2} className='grid'><h2 className="playerComponentTitleText">#{this.state.playerInfo.playerNumber}|{this.state.playerInfo.playerPosition}</h2><br/><h4 className="playerComponentTitleText">{this.state.playerInfo.playerTeam}</h4></Col>
+                    {/* <Col s={2} className='grid'></Col> */}
                 </Row>
-                <Row className="playerComponentBackground playerComponentTitleText">
+                <Row className={`playerComponentTitleText ${this.state.class}`}>
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>HT</p></div>    
                         <br/>
@@ -89,7 +91,7 @@ class PlayerComponent extends Component{
                         <h5>{this.state.playerInfo.playerPIE}</h5>
                     </Col>
                 </Row>
-                <Row className="playerComponentBackground playerComponentTitleText">
+                <Row className={`playerComponentTitleText ${this.state.class}`}>
                     <Col s={2} className='playerComponentGrid'>
                         <div className="playerComponentTile"><p>Age</p></div>    
                         <br/>

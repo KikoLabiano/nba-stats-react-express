@@ -71,18 +71,16 @@ class PlayerChartComponent extends Component{
             let seasonTotalsRS = dat.resultSets.filter( function (el) {
                 return el.name === statName;
             });
-
             let seasons = [];
             let points = [];
             let rebounds = [];
             let assists = [];
             let initSeason = Number(seasonTotalsRS[0].rowSet[0][1].toString().substring(0,4));
             seasonTotalsRS[0].rowSet.forEach((season,i)=>{
-            seasons.push(season[1]);
-            points.push(Number((Number(season[26])/Number(season[6])).toFixed(2)));
-            rebounds.push(Number((Number(season[26])/Number(season[20])).toFixed(2)));
-            assists.push(Number((Number(season[26])/Number(season[21])).toFixed(2)));
-            
+                seasons.push(season[1]);
+                points.push(Number((Number(season[26])/Number(season[6])).toFixed(2)));
+                rebounds.push(Number((Number(season[20])/Number(season[6])).toFixed(2)));
+                assists.push(Number((Number(season[21])/Number(season[6])).toFixed(2)));            
             });
 
             this.setState(prevState=>({  

@@ -31,7 +31,7 @@ class PlayerBarChartComponent extends Component{
             },
             series: [{
                 name: '',
-                data: [61, 3, 4, 7, 2]
+                data: []
             }]
         }
     }
@@ -69,7 +69,7 @@ class PlayerBarChartComponent extends Component{
                         assists = season[8];
                     }
                     break;
-                case "RBD":
+                case "REB":
                     if(rebounds===""){
                         texts.push(`Rebounds<br/>(${season[2]}<br/> vs. ${season[4]} ${season[5]})`);
                         rebounds = season[8];
